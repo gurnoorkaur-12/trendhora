@@ -1,19 +1,25 @@
-const express = require("express")
-const app = express()
-const cors = require("cors")
-require("dotenv").config()
-const connectDB = require("./config/db")
-const PORT = process.env.PORT || 5000
+const express = require("express");
+const cors = require("cors");
+require("dotenv").config();
+const connectDB = require("./config/db");
 
-// middlewares
-app.use(express.json())
-app.use(express.urlencoded({extended: false}))
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Connect to MongoDB
+connectDB();
+
+// Middlewares
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
+app.use(cors());  // Apply CORS middleware globally
 
-// connect to the mongodb database
-/* connectDB() */
+// Routes
+app.use('/api/items', require("./routes/items"));
+app.use('/api/payment', require("./routes/payment"));
 
-app.use('/api/items', require("./routes/items"))
-app.use('/api/payment', cors(), require("./routes/payment"))
-
-app.listen(PORT, console.log("Server is running on port ", PORT))
+// Start the server
+app.listen(PORT, () => {
+  console.log("Server is running on port", PORT);
+});
