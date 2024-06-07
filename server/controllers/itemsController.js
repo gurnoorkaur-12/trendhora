@@ -2,9 +2,18 @@ const Item = require("../models/itemsModel")
 
 /* GET request handler */
 const getItem = async (req, res) => {
-    const items = await Item.find()
-    res.json(items)
-}
+    try {
+        const items = await Item.find(); // This queries all items
+    
+        if (items.length > 0) {
+          res.status(200).json(items); 
+        } else {
+          res.status(404).json({ message: 'No items found' });
+        }
+      } catch (err) {
+        res.status(500).json({ message: 'Server error' });
+      }
+    };
 
 /* POST Request handler */
 const addItem = async (req, res) => {
