@@ -3,6 +3,7 @@ const router = express.Router()
 const cors = require("cors")
 const uploadPhoto = require("../middlewares/upload")
 const { getItem, addItem, updateItem, deleteItem } = require("../controllers/itemsController")
+const Item = require("../models/Item"); 
 
 router.get('/', cors(), async (req, res) => {
     try {
