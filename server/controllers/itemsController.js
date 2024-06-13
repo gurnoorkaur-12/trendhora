@@ -1,10 +1,10 @@
-const Item = require("../models/itemsModel")
+const Item = require("../models/Item")
 
 /* GET request handler */
 const getItem = async (req, res) => {
     try {
         const items = await Item.find(); // This queries all items
-    
+        console.log('Query:', items);
         if (items.length > 0) {
           res.status(200).json(items); 
         } else {
