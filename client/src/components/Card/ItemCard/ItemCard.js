@@ -20,14 +20,25 @@ const ItemCard = (props) => {
         cartItemsContext.addItem(props.item, 1)
     }
 
-    return ( 
+    if (!props.item || !props.item.category || !props.item.image || props.item.image.length === 0) {
+        return null; // Avoid rendering if item or required properties are not defined
+    }
+
+    const getImageUrl = (image) => {
+        return `https://trendhora-api.onrender.com/public/${props.item.category}/${image.filename}`;
+    };
+
+    return (
         <div className="product__card__card">
             <div className="product__card">
-                <div className="product__image" 
+                <div className="product__image"
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
-                > 
-                    {isHovered? <img src={`https://shema-backend.vercel.app/public/${props.item.category}/${props.item.image[1].filename}`} alt="item" className="product__img"/>: <img src= {`https://shema-backend.vercel.app/public/${props.item.category}/${props.item.image[0].filename}`} alt="item" className="product__img"/> }
+                >
+                    {isHovered && props.item.image[1] ?
+                        <img src={getImageUrl(props.item.image[1])} alt="item" className="product__img" /> :
+                        <img src={getImageUrl(props.item.image[0])} alt="item" className="product__img" />
+                    }
                 </div>
                 <div className="product__card__detail">
                     <div className="product__name">
