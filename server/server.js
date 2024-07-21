@@ -17,7 +17,6 @@ app.use(cors());
 // Define routes
 app.use('/api/items', require("./routes/items"));
 app.use('/api/payment', require("./routes/payment"));
-app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // Root route
 app.get('/', (req, res) => {
