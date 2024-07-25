@@ -14,9 +14,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 app.use(cors());
 
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
 // Define routes
 app.use('/api/items', require("./routes/items"));
 app.use('/api/payment', require("./routes/payment"));
+
 
 // Root route
 app.get('/', (req, res) => {
