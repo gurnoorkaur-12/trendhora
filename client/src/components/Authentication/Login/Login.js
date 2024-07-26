@@ -1,29 +1,28 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-const Register = () => {
-    const [username, setUsername] = useState('');
+const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleRegister = async (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('/api/auth/register', { username, email, password });
-            alert('Registration successful!');
+            const response = await axios.post('/api/auth/login', { email, password });
+            localStorage.setItem('token', response.data.token); // Store JWT token
+            alert('Login successful!');
         } catch (error) {
-            alert('Registration failed');
+            alert('Login failed');
         }
     };
 
     return (
-        <form onSubmit={handleRegister}>
-            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" required />
+        <form onSubmit={handleLogin}>
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-            <button type="submit">Register</button>
+            <button type="submit">Login</button>
         </form>
     );
 };
 
-export default Register;
+export default Login;
