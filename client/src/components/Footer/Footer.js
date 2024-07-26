@@ -1,3 +1,5 @@
+import React from 'react';
+
 import './Footer.css'
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EmailIcon from '@mui/icons-material/Email';
@@ -7,6 +9,11 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import PinterestIcon from '@mui/icons-material/Pinterest';
+
+const handlePhoneClick = () => {
+    window.location.href = 'tel:+919319042075';
+};
+
 
 const Footer = () => {
     return ( 
@@ -37,14 +44,17 @@ const Footer = () => {
                             <h1>Contact Us</h1>
                         </div>
                         <ul className="footer__contacts">
+                        <li className="footer__contact">
+            <a href="tel:+919319042075" className="footer__contact-link">
+                <LocalPhoneIcon /> <span>+91 9319042075</span>
+            </a>
+        </li>
+
+<li className="footer__contact">
+    <EmailIcon /> <span><a href="mailto:agamjotsingh1801@gmail.com">shop@trendhora.com</a></span>
+</li>
                             <li className="footer__contact">
-                                <LocalPhoneIcon /> <span>+91 9319042075</span>
-                            </li>
-                            <li className="footer__contact">
-                                <EmailIcon /> <span>shop@trendhora.com</span>
-                            </li>
-                            <li className="footer__contact">
-                                <LocationOnIcon /> <span>Delhi India</span>
+                                <LocationOnIcon /> <span>Delhi, India</span>
                             </li>
                         </ul>
                     </div>

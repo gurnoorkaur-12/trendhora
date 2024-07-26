@@ -1,14 +1,14 @@
 {
-  "name": "Shema Server",
+  "name": "TrendHora",
   "version": "1.0.0",
   "description": "Test Server for SHEMA",
-  "proxy": "http://localhost:3000/1 ",
+  "proxy": "http://localhost:5000",
   "main": "server.js",
   "scripts": {
     "start": "node server",
     "dev": "nodemon server"
   },
-  "author": "Bereket Lemma",
+  "author": "Agamjot Singh",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.7.2",
