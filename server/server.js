@@ -5,6 +5,7 @@ const cors = require("cors");
 require("dotenv").config();
 const connectDB = require("./config/db");
 const PORT = process.env.PORT || 5000;
+const authRoutes = require('./routes/auth'); // Add this line
 
 // Connect to database
 connectDB();
@@ -20,6 +21,9 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use('/api/items', require("./routes/items"));
 app.use('/api/payment', require("./routes/payment"));
 
+
+// Add this line after other routes
+app.use('/api/auth', authRoutes);
 
 // Root route
 app.get('/', (req, res) => {
