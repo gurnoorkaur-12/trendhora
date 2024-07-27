@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 // Register Route
-router.post('/api/auth/register', async (req, res) => {
+router.post('/register', async (req, res) => {
     const { username, email, password } = req.body;
     try {
         const userExists = await User.findOne({ email });
@@ -22,7 +22,7 @@ router.post('/api/auth/register', async (req, res) => {
 });
 
 // Login Route
-router.post('/api/auth/login', async (req, res) => {
+router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await User.findOne({ email });
@@ -34,8 +34,10 @@ router.post('/api/auth/login', async (req, res) => {
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
         res.json({ token });
     } catch (error) {
+        console.error('Login error:', error);
         res.status(500).json({ message: error.message });
     }
 });
+
 
 module.exports = router;

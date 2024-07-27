@@ -14,9 +14,10 @@ const RegisterCard = () => {
         try {
             const response = await axios.post('/api/auth/register', { username, email, password });
             alert('Registration successful!');
-            navigate('/account/login'); // Navigate to login page or desired route
+            navigate('/account/login');
         } catch (error) {
-            alert(`Registration failed: ${error.response ? error.response.data.message : error.message}`);
+            const errorMessage = error.response ? error.response.data.message : error.message;
+            alert(`Registration failed: ${errorMessage}`);
         }
     };
 
@@ -30,23 +31,47 @@ const RegisterCard = () => {
                     <div className="register__inputs">
                         <div className="reg__input__container">
                             <label className="input__label">Username</label>
-                            <input type="text" className="register__input" value={username} onChange={(e) => setUsername(e.target.value)} required />
+                            <input
+                                type="text"
+                                className="register__input"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                required
+                            />
                         </div>
                         <div className="reg__input__container">
                             <label className="input__label">Email</label>
-                            <input type="email" className="register__input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder='example@gmail.com' required />
+                            <input
+                                type="email"
+                                className="register__input"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="example@gmail.com"
+                                required
+                            />
                         </div>
                         <div className="reg__input__container">
                             <label className="input__label">Password</label>
-                            <input type="password" className="register__input" value={password} onChange={(e) => setPassword(e.target.value)} placeholder='**********' required />
+                            <input
+                                type="password"
+                                className="register__input"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="**********"
+                                required
+                            />
                         </div>
                         <div className="register__button__container">
-                            <button type="submit" className="register__button">Create Account</button>
+                            <button type="submit" className="register__button">
+                                Create Account
+                            </button>
                         </div>
                     </div>
                 </form>
                 <div className="register__other__actions">
-                    <div className="register__login__account">Already have an account? <Link to="/account/login">Login</Link></div>
+                    <div className="register__login__account">
+                        Already have an account? <Link to="/account/login">Login</Link>
+                    </div>
                 </div>
             </div>
         </div>

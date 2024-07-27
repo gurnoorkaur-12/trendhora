@@ -1,6 +1,5 @@
-
 .register__card__container {
-    height: 650px;
+    height: 500px;
     width: 420px;
     margin: auto;
     box-shadow: 0px 2px 5px -2px;
@@ -14,18 +13,16 @@
 }
 
 .register__header {
-    height: 20%;
+    height: 19%;
     width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 
-
 .register__header h1 {
     font-size: 2.5rem;
     font-weight: bolder;
-
 }
 
 .register__inputs {
@@ -34,7 +31,7 @@
 }
 
 .reg__input__container {
-    height:19%;
+    height: 19%;
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -51,6 +48,11 @@
 .register__input {
     width: 100%;
     height: 50%;
+    padding: 0.75rem; /* Padding inside the input */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Slightly rounded corners */
+    font-size: 1rem; /* Standard font size */
+
 }
 
 .register__button__container {
@@ -59,19 +61,47 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 1.5rem; /* Space above the button */
+
 }
 
 .register__button {
-    height: 50%;
-    width: 100%;
-    font-size: 1.1rem;
-    background-color: #FFE26E;
-    border-color: #FFE26E;
-    border-style: dashed;
-    font-weight:bold;
+    width: 100%; /* Full width */
+    padding: 0.75rem; /* Padding inside the button */
+    font-size: 1rem; /* Standard font size */
+    font-weight: bold; /* Bold text */
+    background-color: #ffe26e; /* Custom yellow background */
+    border: 1px dashed #ffe26e; /* Dashed border matching background */
+    border-radius: 4px; /* Slightly rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; 
+}
+
+.register__button:hover {
+    background-color: #ffd700; /* Darker yellow on hover */
 }
 
 .register__other__actions {
     height: 20%;
     width: 100%;
+    margin-top: 1rem; /* Space above the other actions */
+    text-align: center; 
+}
+
+
+.register__login__account {
+    font-size: 0.9rem; /* Slightly smaller font size */
+    color: #007bff; /* Custom blue color */
+    text-decoration: none; /* No underline */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.register__login__account a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+
+.register__login__account a {
+    color: inherit; /* Inherit color from parent */
+    text-decoration: none; /* No underline */
 }
