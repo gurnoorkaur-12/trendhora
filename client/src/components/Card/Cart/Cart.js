@@ -12,18 +12,21 @@ import axios from 'axios';
 
 const style = {
   position: 'absolute',
-  top: '50%',
+  top: '60%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
   minWidth: '350px',
-  width: '45%',
+  width: '90%', // mobile ke liye responsive
+  maxWidth: '500px',
   height: '400px',
   bgcolor: 'background.paper',
   border: '5px solid #FFE26E',
   borderRadius: '15px',
   boxShadow: 24,
   p: 4,
+  zIndex: 1500, // Drawer ke upar
 };
+
 
 const Cart = () => {
     const [open, setOpen] = useState(false);

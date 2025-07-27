@@ -9,7 +9,7 @@
     flex-wrap: wrap-reverse;
     background-color: #ffe26e;
     position: relative;
-    margin-top: 9rem;
+    margin-top: 10rem;
 }
 
 
@@ -73,7 +73,7 @@
 @media screen and (max-width: 768px) {
 
     .landing__container{
-        margin-top: 4rem;
+        margin-top: 9rem;
     }
 
     .landing__header__container {
@@ -96,4 +96,6 @@
         margin-top: 2rem;
         margin-left: 2.3rem;
     }
+
+    
 }

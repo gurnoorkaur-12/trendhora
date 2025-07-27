@@ -1,19 +1,22 @@
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useContext } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
-import Control from '../Controls/Control';
-import Form from '../Search-Bar/Form';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import Badge from '@mui/material/Badge';
 import { Link } from 'react-router-dom';
+import Cart from '../../Card/Cart/Cart';
+import { WishItemsContext } from '../../../Context/WishItemsContext';
 
 const DrawerNav = () => {
   const [state, setState] = useState({ left: false });
+  const wishItems = useContext(WishItemsContext);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) return;
@@ -27,13 +30,13 @@ const DrawerNav = () => {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        backgroundColor: '#ffffff', // white drawer
+        backgroundColor: '#ffffff',
         boxShadow: '2px 0 8px rgba(0,0,0,0.1)',
       }}
       role="presentation"
     >
-      {/* Nav Links */}
       <List sx={{ paddingTop: '1rem' }}>
+        {/* Navigation links */}
         {[
           { text: 'Home', to: '/' },
           { text: 'Shop', to: '/shop' },
@@ -65,70 +68,92 @@ const DrawerNav = () => {
             </ListItemButton>
           </ListItem>
         ))}
-      </List>
 
-      <Divider />
+        {/* Divider style spacing */}
+        <Box sx={{ my: 1, borderTop: '1px solid #e0e0e0' }} />
 
-      {/* Control Section */}
-      <List sx={{ padding: '0.5rem 1rem' }}>
+        {/* Control links */}
         <ListItem disablePadding>
-          <Control />
+          <ListItemButton component={Link} to="/account/login" onClick={toggleDrawer(anchor, false)}>
+            <PersonOutlineIcon sx={{ mr: 2 }} />
+            <ListItemText primary="Account" primaryTypographyProps={{ fontWeight: 600 }} />
+          </ListItemButton>
         </ListItem>
-      </List>
 
-      <Divider />
-
-      {/* Search Bar */}
-      <List sx={{ padding: '1rem' }}>
-        <ListItem>
-          <div className="search__drawer">
-            <Form />
-          </div>
+        <ListItem disablePadding>
+          <ListItemButton component={Link} to="/wishlist" onClick={toggleDrawer(anchor, false)}>
+            <Badge
+              badgeContent={wishItems.items.length}
+              sx={{
+                '& .MuiBadge-badge': {
+                  backgroundColor: '#e53935',
+                  color: '#fff',
+                  fontWeight: 600,
+                  fontSize: '0.7rem',
+                  minWidth: 20,
+                  height: 20,
+                  borderRadius: '50%',
+                  boxShadow: '0 2px 6px rgba(0,0,0,0.25)',
+                  border: '2px solid #fff',
+                },
+              }}
+            >
+              <FavoriteBorderIcon sx={{ mr: 2 }} />
+            </Badge>
+            <ListItemText primary="Wishlist" primaryTypographyProps={{ fontWeight: 600 }} />
+          </ListItemButton>
         </ListItem>
+
+        {/* Cart component (Modal trigger) */}
+        <ListItem disablePadding>
+          <ListItemButton sx={{ display: 'flex', alignItems: 'center' }}>
+            <Cart /> {/* Ye modal trigger karega */}
+            <ListItemText
+              primary="Cart"
+              primaryTypographyProps={{
+                fontWeight: 600,
+                marginLeft: '12px',
+              }}
+            />
+          </ListItemButton>
+        </ListItem>
+
       </List>
     </Box>
   );
 
   return (
     <Fragment>
-      {['left'].map((anchor) => (
-        <Fragment key={anchor}>
-          <Box sx={{ p: 1 }}>
-            {state[anchor] ? (
-              <MenuOpenIcon
-                fontSize="large"
-                onClick={toggleDrawer(anchor, false)}
-                sx={{
-                  cursor: 'pointer',
-                  backgroundColor: '#FFD600', // yellow circle
-                  borderRadius: '50%',
-                  padding: '4px',
-                  color: '#333',
-                }}
-              />
-            ) : (
-              <MenuIcon
-                fontSize="large"
-                onClick={toggleDrawer(anchor, true)}
-                sx={{
-                  cursor: 'pointer',
-                  backgroundColor: '#FFD600', // yellow circle
-                  borderRadius: '50%',
-                  padding: '4px',
-                  color: '#333',
-                }}
-              />
-            )}
-          </Box>
-          <Drawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-          >
-            {list(anchor)}
-          </Drawer>
-        </Fragment>
-      ))}
+      <Box sx={{ p: 1 }}>
+        {state.left ? (
+          <MenuOpenIcon
+            fontSize="large"
+            onClick={toggleDrawer('left', false)}
+            sx={{
+              cursor: 'pointer',
+              backgroundColor: '#FFD600',
+              borderRadius: '50%',
+              padding: '4px',
+              color: '#333',
+            }}
+          />
+        ) : (
+          <MenuIcon
+            fontSize="large"
+            onClick={toggleDrawer('left', true)}
+            sx={{
+              cursor: 'pointer',
+              backgroundColor: '#FFD600',
+              borderRadius: '50%',
+              padding: '4px',
+              color: '#333',
+            }}
+          />
+        )}
+      </Box>
+      <Drawer anchor="left" open={state.left} onClose={toggleDrawer('left', false)}>
+        {list('left')}
+      </Drawer>
     </Fragment>
   );
 };

@@ -1,101 +1,41 @@
 .nav__top__container {
-    height: 100px;
-    width: 100%;
-    display: flex;
-
-    /* Make navbar sticky */
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-
-    /* Background and subtle shadow for better visibility */
-    background-color: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  font-family: 'Roboto', sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .top__container {
-    height: 70px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
-/* Form container (search bar) */
 .form__container {
-    width: 50%;
-    min-height: 10px;
-    height: auto;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    align-self: center;
+  flex: 1;
+  margin: 0 20px;
 }
 
-/* Control bar (icons / cart / profile) */
 .control__bar {
-    align-self: center;
-    height: auto;
-    width: auto;
-    z-index: 1000;
+  display: flex;
+  gap: 15px;
 }
 
-/* Drawer nav (hamburger menu) hidden by default */
 .drawer {
-    display: none;
-    height: auto;
-    width: 80px;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Small screens: Hide search bar and adjust layout */
-@media screen and (max-width: 500px) {
-    .nav__top__container {
-        height: auto;
-    }
-    .form__container {
-        display: none;
-    }
-    .top__container {
-        justify-content: space-between;
-        padding: 0 0.5rem;
-    }
-}
-
-/* Hide full controls and show drawer for tablets/mobiles */
-@media screen and (max-width: 780px) {
-    .control__bar {
-        display: none;
-    }
-    .drawer {
-        display: flex;
-    }
-}
-
-/* Show navlinks only on large screens */
-.navlinks__desktop {
   display: flex;
 }
 
-.drawer {
-  display: none;
-}
-
-/* Small screens: hide navlinks, show drawer */
-@media screen and (max-width: 780px) {
-  .navlinks__desktop {
-    display: none;
+/* Mobile hide search + control from top container */
+@media (max-width: 768px) {
+  .form__container {
+    padding: 10px 0;
   }
   .drawer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-left: auto;  
   }
-}
 
+}
