@@ -79,13 +79,24 @@ const ItemCard = (props) => {
             </div>
             
             {/* Toaster Component */}
-            <Toaster
+            {/* <Toaster
                 message={toasterMessage}
                 isVisible={showToaster}
                 onClose={handleCloseToaster}
                 type="success"
                 duration={4000}
-            />
+            /> */}
+            <Toaster
+    title={toasterMessage.includes("wishlist") 
+        ? `Added "${props.item.name}" to wishlist` 
+        : ` "${props.item.name}" added to cart`}
+    message={toasterMessage}
+    isVisible={showToaster}
+    onClose={handleCloseToaster}
+    type="success"
+    duration={1000}
+/>
+
         </>
     );
 };
