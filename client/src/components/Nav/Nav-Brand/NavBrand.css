@@ -24,3 +24,9 @@ body.dark-theme .navbrand img {
   filter: brightness(1.2);
 }
 
+@media(max-width:768px){
+  .navbrand img{
+        margin-top: 0.5rem;
+        padding: 10px;
+  }
+}
