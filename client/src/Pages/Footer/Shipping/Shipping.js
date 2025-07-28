@@ -14,7 +14,7 @@ const ShippingPage = () => {
             <p>There are no shipping charges for deliveries within India. For international orders, shipping charges will be calculated at checkout.</p>
 
             <h2>Delivery Time</h2>
-            <p>All orders are processed within 1–2 business days. Delivery takes 3–7 working days depending on your location.</p>
+            <p>All orders are processed within 1-2 business days. Delivery takes 3-7 working days depending on your location.</p>
 
             <h2>Cash on Delivery</h2>
             <p>COD is available on orders between ₹1,000 and ₹10,000 based on pin code eligibility.</p>

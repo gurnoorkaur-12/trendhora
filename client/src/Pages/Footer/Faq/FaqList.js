@@ -9,11 +9,11 @@ const FaqList = () => {
         },
         {
             question: "Sending gifts to loved ones?",
-            answer: "You can send any product from www.harmaig.com as a gift to your loved ones, with the option to include a personalized message."
+            answer: "You can send any product from TrendHora as a gift to your loved ones, with the option to include a personalized message."
         },
         {
             question: "What is the Cash on Delivery (COD) payment option?",
-            answer: "Cash on Delivery is a payment method offered by Harmaig, allowing you to pay in cash upon receiving your product. No advance payment is required for COD orders."
+            answer: "Cash on Delivery is a payment method offered by trendHora, allowing you to pay in cash upon receiving your product. No advance payment is required for COD orders."
         },
         {
             question: "Is there an extra charge for using Cash on Delivery?",
@@ -29,7 +29,7 @@ const FaqList = () => {
         },
         {
             question: "How do I cancel my COD order?",
-            answer: "You can cancel a COD order by calling customer care at *phone number* or emailing demo@gmail.com, provided the order has not yet been shipped."
+            answer: "You can cancel a COD order by calling customer care at 91-93190-42075 or emailing agamjotsingh1801@gmail.com, provided the order has not yet been shipped."
         },
         {
             question: "What if it gets lost or mis-product?",

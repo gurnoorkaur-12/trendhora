@@ -1,4 +1,4 @@
-.container {
+.refund-container {
   max-width: 500px;
   margin: 4rem auto !important;
   padding: 2rem;
@@ -8,13 +8,13 @@
   text-align: center;
 }
 
-.container h2 {
+.refund-container h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: #222;
 }
 
-.container p {
+.refund-container p {
   font-size: 1rem;
   color: #555;
   margin-bottom: 2rem;
