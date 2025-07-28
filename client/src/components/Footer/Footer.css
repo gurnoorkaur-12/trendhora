@@ -50,6 +50,13 @@
     list-style-type: none;
     display: flex;
     flex-direction: column;
+    color: #000 !important;
+}
+
+.footer__help__container a ,
+.footer__contact__container a{
+    color: #000 !important;
+    text-decoration: none;
 }
 
 .footer__contact__container {
