@@ -1,5 +1,5 @@
 .footer__container {
-    padding: 1rem;
+    padding: 1.5rem;
     height: auto;
     width: 100%;
     background-color: #FFE26E;
@@ -8,13 +8,23 @@
 .footer__items__container {
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
     padding: 2rem 0;
     gap: 2rem;
     padding-left: 2rem;
     padding-right: 2rem;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#navBrand{
+    margin-left: 2rem;
 }
 
 /* Help box styling */
@@ -209,6 +219,10 @@
 }
 
 @media (max-width: 480px) {
+
+    #navBrand{
+    margin-left: 0.7rem;
+}
   .footer__items__container {
     flex-direction: column;
     align-items: flex-start;

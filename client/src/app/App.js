@@ -20,6 +20,7 @@ import WishItemsProvider from '../Context/WishItemsProvider';
 import DrawerNav from '../components/Nav/DrawerNav/DrawerNav';
 import Checkout from '../components/Checkout/Checkout';
 import SearchProvider from '../Context/SearchProvider';
+import Toaster from '../components/Toaster/toaster';
 
 import FaqList from '../Pages/Footer/Faq/FaqList.js';
 import AccessiblityPage from '../Pages/Footer/Accessibility/Accessibility.js';
@@ -29,7 +30,8 @@ import ShippingPage from '../Pages/Footer/Shipping/Shipping.js';
 function App() {
 
   return (
-    <CartItemsProvider>
+    <>
+   <CartItemsProvider>
       <WishItemsProvider>
         <SearchProvider>
           <Router >
@@ -75,7 +77,10 @@ function App() {
           </Router>
         </SearchProvider>
       </WishItemsProvider>
-    </CartItemsProvider>
+   </CartItemsProvider>
+   <Toaster />
+
+   </>
   );
 }
 

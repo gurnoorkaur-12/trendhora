@@ -23,67 +23,69 @@ const Footer = () => {
     return (
         <footer>
             <div className="footer__container">
-                <NavBrand />
-                <div className="footer__items__container">
-                    <div className="footer__help__container">
-                        <div className="footer__help__header">
-                            <h1>Help</h1>
+                <div className="content">
+                    <h1 id="navBrand" >TrendHora</h1>
+                    <div className="footer__items__container">
+                        <div className="footer__help__container">
+                            <div className="footer__help__header">
+                                <h1>Help</h1>
+                            </div>
+                            <ul className="fotter__help__links">
+                                <li className="help__link">
+                                    <a href="/shipping"><LocalShippingIcon fontSize='small' /> Shipping</a>
+                                </li>
+                                <li className="help__link">
+                                    <a href="/refund"><ReplayIcon /> Refund</a>
+                                </li>
+                                <li className="help__link">
+                                    <a href="/faq"> <HelpCenterIcon /> FAQ</a>
+                                </li>
+                                <li className="help__link">
+                                    <a href="/accessibility"><AccessibilityNewIcon /> Accessiblity</a>
+                                </li>
+                            </ul>
                         </div>
-                        <ul className="fotter__help__links">
-                            <li className="help__link">
-                                <a href="/shipping"><LocalShippingIcon fontSize='small' /> Shipping</a>
-                            </li>
-                            <li className="help__link">
-                                <a href="/refund"><ReplayIcon /> Refund</a>
-                            </li>
-                            <li className="help__link">
-                                <a href="/faq"> <HelpCenterIcon /> FAQ</a>
-                            </li>
-                            <li className="help__link">
-                                <a href="/accessibility"><AccessibilityNewIcon /> Accessiblity</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="footer__contact__container">
-                        <div className="footer__contact__header">
-                            <h1>Contact Us</h1>
-                        </div>
-                        <ul className="footer__contacts">
-                            <li className="footer__contact">
-                                <a href="tel:+919319042075" className="footer__contact-link">
-                                    <LocalPhoneIcon /> +91 93190-42075
-                                </a>
-                            </li>
+                        <div className="footer__contact__container">
+                            <div className="footer__contact__header">
+                                <h1>Contact Us</h1>
+                            </div>
+                            <ul className="footer__contacts">
+                                <li className="footer__contact">
+                                    <a href="tel:+919319042075" className="footer__contact-link">
+                                        <LocalPhoneIcon /> +91 93190-42075
+                                    </a>
+                                </li>
 
-                            <li className="footer__contact">
-                                <a href="mailto:agamjotsingh1801@gmail.com"><EmailIcon /> shop@trendhora.com</a>
-                            </li>
-                            <li className="footer__contact">
-                                <a href='#' ><LocationOnIcon />  Delhi, India</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="footer__social__link__container">
-                        <div className="footer__social__link__header">
-                            <h1>Stay Connected</h1>
+                                <li className="footer__contact">
+                                    <a href="mailto:agamjotsingh1801@gmail.com"><EmailIcon /> shop@trendhora.com</a>
+                                </li>
+                                <li className="footer__contact">
+                                    <a href='#' ><LocationOnIcon />  Delhi, India</a>
+                                </li>
+                            </ul>
                         </div>
-                        <ul className="footer__social__links">
-                            <li className="social__link">
-                                <a href='#'> <TwitterIcon /> </ a>
-                            </li>
-                            <li className="social__link">
-                                <a href='#'> <InstagramIcon /> </a>
-                            </li>
-                            <li className="social__link">
-                                <a href='#'> <YouTubeIcon /> </a>
-                            </li>
-                            <li className="social__link">
-                                <a href='#'> <TelegramIcon /> </a>
-                            </li>
-                            <li className="social__link">
-                                <a href='#'> <PinterestIcon /> </a>
-                            </li>
-                        </ul>
+                        <div className="footer__social__link__container">
+                            <div className="footer__social__link__header">
+                                <h1>Stay Connected</h1>
+                            </div>
+                            <ul className="footer__social__links">
+                                <li className="social__link">
+                                    <a href='#'> <TwitterIcon /> </ a>
+                                </li>
+                                <li className="social__link">
+                                    <a href='#'> <InstagramIcon /> </a>
+                                </li>
+                                <li className="social__link">
+                                    <a href='#'> <YouTubeIcon /> </a>
+                                </li>
+                                <li className="social__link">
+                                    <a href='#'> <TelegramIcon /> </a>
+                                </li>
+                                <li className="social__link">
+                                    <a href='#'> <PinterestIcon /> </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
