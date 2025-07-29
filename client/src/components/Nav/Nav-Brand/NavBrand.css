@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   height: 70px;
-  margin: 20px 0;
+  margin-bottom: 2rem;
 }
 
 .navbrand img {
@@ -12,6 +12,7 @@
   object-fit: contain;
   cursor: pointer;
   transition: transform 0.3s ease;
+  margin-top: 2rem;
 }
 
 /* Hover effect */
@@ -23,6 +24,8 @@
 body.dark-theme .navbrand img {
   filter: brightness(1.2);
 }
+
+
 
 @media (max-width:768px){
     .navbrand__container{
