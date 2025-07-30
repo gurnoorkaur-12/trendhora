@@ -23,6 +23,17 @@ const DrawerNav = () => {
     setState({ ...state, [anchor]: open });
   };
 
+  const linkButtonStyle = {
+    transition: '0.3s ease',
+    textDecoration: 'none',
+    color: '#333',
+    '&:hover': {
+      backgroundColor: '#fff8e1',
+      paddingLeft: '20px',
+      color: '#333',
+    },
+  };
+
   const list = (anchor) => (
     <Box
       sx={{
@@ -49,39 +60,44 @@ const DrawerNav = () => {
               component={Link}
               to={to}
               onClick={toggleDrawer(anchor, false)}
-              sx={{
-                transition: '0.3s ease',
-                '&:hover': {
-                  backgroundColor: '#fff8e1',
-                  paddingLeft: '20px',
-                },
-              }}
+              sx={linkButtonStyle}
             >
               <ListItemText
                 primary={text}
                 primaryTypographyProps={{
                   fontSize: '1.1rem',
                   fontWeight: 600,
-                  color: '#333',
+                  color: 'inherit',
                 }}
               />
             </ListItemButton>
           </ListItem>
         ))}
 
-        {/* Divider style spacing */}
+        {/* Divider */}
         <Box sx={{ my: 1, borderTop: '1px solid #e0e0e0' }} />
 
-        {/* Control links */}
+        {/* Account */}
         <ListItem disablePadding>
-          <ListItemButton component={Link} to="/account/login" onClick={toggleDrawer(anchor, false)}>
+          <ListItemButton
+            component={Link}
+            to="/account/login"
+            onClick={toggleDrawer(anchor, false)}
+            sx={linkButtonStyle}
+          >
             <PersonOutlineIcon sx={{ mr: 2 }} />
-            <ListItemText primary="Account" primaryTypographyProps={{ fontWeight: 600 }} />
+            <ListItemText primary="Account" primaryTypographyProps={{ fontWeight: 600, color: 'inherit' }} />
           </ListItemButton>
         </ListItem>
 
+        {/* Wishlist */}
         <ListItem disablePadding>
-          <ListItemButton component={Link} to="/wishlist" onClick={toggleDrawer(anchor, false)}>
+          <ListItemButton
+            component={Link}
+            to="/wishlist"
+            onClick={toggleDrawer(anchor, false)}
+            sx={linkButtonStyle}
+          >
             <Badge
               badgeContent={wishItems.items.length}
               sx={{
@@ -100,24 +116,24 @@ const DrawerNav = () => {
             >
               <FavoriteBorderIcon sx={{ mr: 2 }} />
             </Badge>
-            <ListItemText primary="Wishlist" primaryTypographyProps={{ fontWeight: 600 }} />
+            <ListItemText primary="Wishlist" primaryTypographyProps={{ fontWeight: 600, color: 'inherit' }} />
           </ListItemButton>
         </ListItem>
 
-        {/* Cart component (Modal trigger) */}
+        {/* Cart */}
         <ListItem disablePadding>
-          <ListItemButton sx={{ display: 'flex', alignItems: 'center' }}>
-            <Cart /> {/* Ye modal trigger karega */}
+          <ListItemButton sx={{ ...linkButtonStyle, display: 'flex', alignItems: 'center' }}>
+            <Cart />
             <ListItemText
               primary="Cart"
               primaryTypographyProps={{
                 fontWeight: 600,
                 marginLeft: '12px',
+                color: 'inherit',
               }}
             />
           </ListItemButton>
         </ListItem>
-
       </List>
     </Box>
   );
