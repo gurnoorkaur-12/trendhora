@@ -12,6 +12,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Badge from '@mui/material/Badge';
 import { Link } from 'react-router-dom';
 import Cart from '../../Card/Cart/Cart';
+import WishCard from '../../Card/Wishlist/WishCard';
 import { WishItemsContext } from '../../../Context/WishItemsContext';
 
 const DrawerNav = () => {
@@ -95,8 +96,7 @@ const DrawerNav = () => {
           <ListItemButton
             component={Link}
             to="/wishlist"
-            onClick={toggleDrawer(anchor, false)}
-            sx={linkButtonStyle}
+          sx={{ ...linkButtonStyle, display: 'flex', alignItems: 'center' }}
           >
             <Badge
               badgeContent={wishItems.items.length}
@@ -110,25 +110,28 @@ const DrawerNav = () => {
                   height: 20,
                   borderRadius: '50%',
                   boxShadow: '0 2px 6px rgba(0,0,0,0.25)',
-                  border: '2px solid #fff',
+                  marginRight: '1rem'
                 },
               }}
             >
               <FavoriteBorderIcon sx={{ mr: 2 }} />
             </Badge>
-            <ListItemText primary="Wishlist" primaryTypographyProps={{ fontWeight: 600, color: 'inherit' }} />
+            <ListItemText primary="Wishlist" primaryTypographyProps={{
+              fontWeight: 600,              
+              color: 'inherit',
+            }} />
           </ListItemButton>
         </ListItem>
 
         {/* Cart */}
         <ListItem disablePadding>
-          <ListItemButton sx={{ ...linkButtonStyle, display: 'flex', alignItems: 'center' }}>
+          <ListItemButton sx={{ ...linkButtonStyle, display: 'flex', alignItems: 'center',marginLeft:"-4px"}}>
             <Cart />
             <ListItemText
               primary="Cart"
               primaryTypographyProps={{
                 fontWeight: 600,
-                marginLeft: '12px',
+                marginLeft:'10px',
                 color: 'inherit',
               }}
             />
