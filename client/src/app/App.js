@@ -21,6 +21,8 @@ import DrawerNav from '../components/Nav/DrawerNav/DrawerNav';
 import Checkout from '../components/Checkout/Checkout';
 import SearchProvider from '../Context/SearchProvider';
 import Toaster from '../components/Toaster/toaster';
+import TermsConditions from '../components/Legal/TermsConditions/TermsConditions';
+import PrivacyPolicy from '../components/Legal/PrivacyPolicy/PrivacyPolicy';
 
 function App() {
 
@@ -60,6 +62,8 @@ function App() {
               </Route>
               <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/search/*" element={<SearchView />} />
+              <Route path="/terms" element={<TermsConditions />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
             </Routes>
             <Footer />
             <Routes>
