@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css'
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EmailIcon from '@mui/icons-material/Email';
@@ -92,8 +93,16 @@ const Footer = () => {
             <div className="fotter__copyright__container">
                 <ul className='nav'>
                     <li className="footer__copyright">©2025 TrendHora</li>
-                    <li className="footer__terms__condition"> Terms & Condition</li>
-                    <li className="footer__privacy__policy"> Privacy Policy</li>
+                    <li className="footer__terms__condition">
+                        <Link to="/terms" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            Terms & Condition
+                        </Link>
+                    </li>
+                    <li className="footer__privacy__policy">
+                        <Link to="/privacy" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            Privacy Policy
+                        </Link>
+                    </li>
                 </ul>
             </div>
         </footer>

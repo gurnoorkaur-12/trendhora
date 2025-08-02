@@ -3,6 +3,10 @@
     height: auto;
     width: 100%;
     background-color: #FFE26E;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    bottom: 0;
 }
 
 .footer__items__container {
@@ -53,9 +57,17 @@
     list-style-type: none;
     display: flex;
     flex-direction: column;
+    color: #000 !important;
+}
+
+.footer__help__container a ,
+.footer__contact__container a{
+    color: #000 !important;
+    text-decoration: none;
     text-align: left;
     gap: 0.5rem;
 }
+
 .help__link a{
     color: rgb(58, 57, 57);
 }
@@ -193,6 +205,18 @@
     padding: 0 0.5rem;
     white-space: nowrap;
     text-align: center;
+}
+
+.footer__terms__condition,
+.footer__privacy__policy {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.footer__terms__condition:hover,
+.footer__privacy__policy:hover {
+    color: #fff;
+    text-decoration: underline;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
