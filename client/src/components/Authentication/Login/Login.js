@@ -3,38 +3,73 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import LoginCard from '../../Card/LoginCard/LoginCard';
 import './Login.css';
+import { FcGoogle } from 'react-icons/fc';
+import { FaGithub } from 'react-icons/fa';
+import { supabase } from '../../../lib/supabase';
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await axios.post('/api/auth/login', { email, password });
-            localStorage.setItem('token', response.data.token); // Store JWT token
-            alert('Login successful!');
-            navigate('/'); // Navigate to dashboard or desired route after login
-        } catch (error) {
-            alert(`Login failed: ${error.response ? error.response.data.message : error.message}`);
-        }
-    };
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('/api/auth/login', { email, password });
+      localStorage.setItem('token', response.data.token);
+      alert('Login successful!');
+      navigate('/');
+    } catch (error) {
+      alert(`Login failed: ${error.response ? error.response.data.message : error.message}`);
+    }
+  };
 
-    return (
-        <div className="login__auth__container">
-            <div className="login__auth">
-                <form onSubmit={handleLogin}>
-                    <LoginCard
-                        email={email}
-                        password={password}
-                        setEmail={setEmail}
-                        setPassword={setPassword}
-                    />
-                </form>
-            </div>
+  const handleOAuthLogin = async (provider) => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider,
+      options: {
+        redirectTo: window.location.origin,
+      },
+    });
+
+    if (error) {
+      console.error('OAuth login error:', error.message);
+      alert('OAuth login failed');
+    }
+  };
+
+  return (
+    <div className="login__auth__container">
+      <div className="login__auth">
+
+        {/* OAuth icons row */}
+        <div className="oauth__icon__row">
+          <button className="oauth-icon-btn" onClick={() => handleOAuthLogin('google')}>
+            <FcGoogle size={30} />
+          </button>
+          <button className="oauth-icon-btn" onClick={() => handleOAuthLogin('github')}>
+            <FaGithub size={30} />
+          </button>
         </div>
-    );
+
+        <div className="oauth__divider">
+          <span>--------------- OR ---------------</span>
+        </div>
+
+        {/* Email/password form */}
+        <form onSubmit={handleLogin}>
+          <LoginCard
+            email={email}
+            password={password}
+            setEmail={setEmail}
+            setPassword={setPassword}
+          />
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default Login;
+
+
