@@ -92,3 +92,13 @@
     border-style: dashed;
     font-weight:bold;
 }
+
+/* Dark mode: black background for category container */
+.dark-mode .category__container {
+    background-color: #000000;
+}
+
+/* Dark mode: white text for category headers */
+.dark-mode .category__header h2 {
+    color: #ffffff;
+}

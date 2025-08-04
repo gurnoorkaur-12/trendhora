@@ -26,4 +26,17 @@
 
 .theme-toggle-btn:hover .theme-icon {
   color: var(--accent-color);
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .theme-toggle-btn {
+    padding: 6px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+  
+  .theme-icon {
+    font-size: 14px;
+  }
 } 

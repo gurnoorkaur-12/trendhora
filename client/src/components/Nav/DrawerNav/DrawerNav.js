@@ -13,6 +13,7 @@ import Badge from '@mui/material/Badge';
 import { Link } from 'react-router-dom';
 import Cart from '../../Card/Cart/Cart';
 import WishCard from '../../Card/Wishlist/WishCard';
+import ThemeToggle from '../../ThemeToggle/ThemeToggle';
 import { WishItemsContext } from '../../../Context/WishItemsContext';
 
 const DrawerNav = () => {
@@ -85,6 +86,24 @@ const DrawerNav = () => {
 
         {/* Divider */}
         <Box sx={{ my: 1, borderTop: '1px solid var(--border-color)' }} />
+
+        {/* Theme Toggle */}
+        <ListItem disablePadding>
+          <ListItemButton
+            sx={{ ...linkButtonStyle, display: 'flex', alignItems: 'center' }}
+          >
+            <Box sx={{ mr: 2, display: 'flex', alignItems: 'center' }}>
+              <ThemeToggle />
+            </Box>
+            <ListItemText 
+              primary="Toggle Theme" 
+              primaryTypographyProps={{ 
+                fontWeight: 600, 
+                color: 'inherit' 
+              }} 
+            />
+          </ListItemButton>
+        </ListItem>
 
         {/* Account */}
         <ListItem disablePadding>

@@ -27,7 +27,7 @@
 .featured__items__header__big {
     font-size: 2rem;
     font-weight: 600;
-    color: var(--text-primary);
+    color: #000000;
 }
 
 .featured__header__small {
@@ -60,9 +60,14 @@
     flex-wrap: wrap;
 }
 
-/* Dark mode: white background for featured items container */
+/* Dark mode: black background for featured items container */
 .dark-mode .featured__products__container {
-    background-color: #ffffff;
+    background-color: #000000;
+}
+
+/* Dark mode: white text for featured items header */
+.dark-mode .featured__items__header__big {
+    color: #ffffff;
 }
 
 /* Add soft white shadow to item cards in dark mode */

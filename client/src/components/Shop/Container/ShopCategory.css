@@ -48,3 +48,13 @@
     height: auto;
     width: 100%;
 }
+
+/* Dark mode: black background for shop category container */
+.dark-mode .shop__category__container {
+    background-color: #000000;
+}
+
+/* Dark mode: white text for shop category headers */
+.dark-mode .shop__category__head h2 {
+    color: #ffffff;
+}
