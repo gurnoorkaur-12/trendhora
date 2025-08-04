@@ -12,6 +12,7 @@ const RegisterCard = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
@@ -23,6 +24,7 @@ const RegisterCard = () => {
       alert(`Registration failed: ${errorMessage}`);
     }
   };
+
 
   const handleOAuthRegister = async (provider) => {
     const { error } = await supabase.auth.signInWithOAuth({

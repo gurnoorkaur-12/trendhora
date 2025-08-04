@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import LoginCard from '../../Card/LoginCard/LoginCard';
 import './Login.css';
 import { FcGoogle } from 'react-icons/fc';
@@ -8,6 +6,7 @@ import { FaGithub } from 'react-icons/fa';
 import { supabase } from '../../../lib/supabase';
 
 const Login = () => {
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -50,6 +49,7 @@ const Login = () => {
           <button className="oauth-icon-btn" onClick={() => handleOAuthLogin('github')}>
             <FaGithub size={30} />
           </button>
+
         </div>
 
         <div className="oauth__divider">
