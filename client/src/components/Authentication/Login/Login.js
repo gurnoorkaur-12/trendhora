@@ -11,17 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('/api/auth/login', { email, password });
-      localStorage.setItem('token', response.data.token);
-      alert('Login successful!');
-      navigate('/');
-    } catch (error) {
-      alert(`Login failed: ${error.response ? error.response.data.message : error.message}`);
-    }
-  };
+  
 
   const handleOAuthLogin = async (provider) => {
     const { error } = await supabase.auth.signInWithOAuth({
