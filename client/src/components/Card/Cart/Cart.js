@@ -44,17 +44,18 @@ const Cart = () => {
         reason: "checkout",
         amount: cartItems.totalAmount,
       };
-
-      await axios
-        .post(`${process.env.REACT_APP_BACKEND_URL}/api/payment`, config)
-        .then((res) => {
-          console.log(res.data);
-          window.location.replace(res.data);
-          handleCheckoutOpen();
-        })
-        .catch((err) => console.log(err));
-    } else {
-      return;
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/payment`, config)
+                .then((res) => {
+                    console.log(res.data)
+                    window.location.replace(res.data)
+                    handleCheckoutOpen()
+                }
+                )
+                .catch((err) => console.log(err))
+        }
+        else {
+            return
+        
     }
   };
 
