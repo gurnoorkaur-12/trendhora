@@ -65,20 +65,12 @@ const DrawerNav = () => {
   const linkButtonStyle = {
     transition: '0.3s',
     textDecoration: 'none',
-    color: '#333',
-    borderRadius: '8px',
+    paddingBottom: '12px',
+    paddingTop: '10px',
+    color: '#704a08ff',
+    borderRadius: '10px',
     borderBottom: 'solid 0.1px #333 ' ,
-    '&:hover': {
-      backgroundColor: '#fff8e1',
-      color: '#FFD600',
-      transform: 'translateX(8px) scale(1.03)',
-    },
-    '&.active': {
-      backgroundColor: '#FFD600',
-      color: '#333',
-      fontWeight: 700,
-      boxShadow: '0 2px 8px rgba(255,214,0,0.08)',
-    },
+    boxShadow: '0px 1px 0px 0px #a06b11ff',
   };
 
   // Helper to check if route is active
@@ -118,8 +110,8 @@ const DrawerNav = () => {
               onClick={handleMenuClose}
               sx={{
                 cursor: 'pointer',
-                backgroundColor: '#FFD600',
-                borderRadius: '50%',
+                backgroundColor: '#a78b45ff',
+                borderRadius: '25%',
                 padding: '4px',
                 color: '#333',
                 zIndex: 1302,
@@ -134,8 +126,8 @@ const DrawerNav = () => {
               onClick={handleMenuClick}
               sx={{
                 cursor: 'pointer',
-                backgroundColor: '#FFD600',
-                borderRadius: '50%',
+                backgroundColor: '#ffe26e',
+                borderRadius: '25%',
                 padding: '4px',
                 color: '#333',
                 zIndex: 1302,
@@ -154,14 +146,14 @@ const DrawerNav = () => {
             initial={{ x: -300, width: 0, opacity: 0 }}
             animate={{ x: 0, width: 280, opacity: 1 }}
             exit={{ x: -300, width: 0, opacity: 0 }}
-           transition={{ duration: 2, type: "tween" }}
+            transition={{ duration: 0.7, type: "tween" }}
             style={{
               position: 'fixed',
               top: 0,
               left: 0,
               height: '100vh',
-              background: '#fff',
-              boxShadow: '2px 0 8px rgba(0,0,0,0.1)',
+              background: 'linear-gradient( #a68a64, #f8e3b4)',
+              boxShadow: '2px 2px 8px rgba(0,0,0,0.1)',
               zIndex: 1300,
               overflowY: 'auto',
               display: 'flex',
@@ -175,7 +167,7 @@ const DrawerNav = () => {
               exit="closed"
             >
               <List sx={{ paddingTop: '1rem'}}>
-                <motion.div>
+                <motion.div style={{paddingBottom: '28px'}}>
                   <NavBrand />
                 </motion.div>
                 {navLinks.map(({ text, to, icon }) => (
@@ -188,7 +180,7 @@ const DrawerNav = () => {
                         sx={linkButtonStyle}
                         className={isActive(to) ? 'active' : ''}
                       >
-                        <ListItemIcon sx={{ minWidth: 36, color: '#333' }}>
+                        <ListItemIcon sx={{ minWidth: 36}}>
                           <img src={icon} alt={text + " icon"} style={{ width: 24, height: 24, objectFit: 'contain' }} />
                         </ListItemIcon>
                         <ListItemText
@@ -212,7 +204,7 @@ const DrawerNav = () => {
                       sx={linkButtonStyle}
                       className={isActive('/account/login') ? 'active' : ''}
                     >
-                      <ListItemIcon sx={{ minWidth: 36, color:  '#333' }}>
+                      <ListItemIcon sx={{ minWidth: 36, color: '#333', }}>
                         <PersonOutlineIcon />
                       </ListItemIcon>
                       <ListItemText primary="Account" primaryTypographyProps={{ color: 'inherit' }} />
@@ -228,7 +220,7 @@ const DrawerNav = () => {
                       onClick={() => setIsOpen(false)}
                       className={isActive('/wishlist') ? 'active' : ''}
                     >
-                      <ListItemIcon sx={{ minWidth: 36, color: '#333' }}>
+                      <ListItemIcon sx={{ minWidth: 36, color: '#333', }}>
                         <Badge
                           badgeContent={wishItems.items.length}
                           sx={{
@@ -258,7 +250,7 @@ const DrawerNav = () => {
                 <motion.div variants={itemVariants}>
                   <ListItem disablePadding>
                     <ListItemButton sx={{ ...linkButtonStyle, display: 'flex', alignItems: 'center', marginLeft: "-4px" }}>
-                      <ListItemIcon sx={{ minWidth: 36, color: '#333 '}}>
+                      <ListItemIcon sx={{ minWidth: 36, color:'#333',}}>
                         <Cart />
                       </ListItemIcon>
                       <ListItemText
@@ -280,14 +272,21 @@ const DrawerNav = () => {
       <style>
         {`
           .MuiListItemButton-root.active {
-            background: #FFD600 !important;
-            color: #333 !important;
-            font-weight: 700 !important;
-            box-shadow: 0 2px 8px rgba(255,214,0,0.08);
+            background: #f4cc8cff !important;
+            color: #a06b11ff !important;
+            border-right: solid #a06b11ff 7px !important;
+            box-shadow: 1px 1.2px 0px 0px #a06b11ff !important;
+          }
+          .MuiListItemButton-root.active .MuiListItemText-primary {
+            font-size: 18px !important;
+            font-weight: 600 !important;
+            font-style: italic;
+            letter-spacing: 1.1px;
+            color: #917143ff !important;
           }
           .MuiListItemButton-root:hover {
-            background: #fff8e1 !important;
-            color: #FFD600 !important;
+            background: #b29157ff !important;
+            color: #43341bff !important;
             transform: translateX(8px) scale(1.03);
           }
         `}
