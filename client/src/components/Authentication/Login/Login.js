@@ -4,12 +4,27 @@ import './Login.css';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 import { supabase } from '../../../lib/supabase';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/auth/login`, { email, password });
+            localStorage.setItem('token', response.data.token); // Store JWT token
+            alert('Login successful!');
+            navigate('/account/me'); // Navigate to account page after login
+        } catch (error) {
+            const errorMessage = error.response ? error.response.data.message : error.message;
+            alert(`Login failed: ${errorMessage}`);
+        }
+    };
 
   
 

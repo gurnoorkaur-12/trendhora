@@ -5,9 +5,6 @@ import './RegisterCard.css';
 import { supabase } from '../../../lib/supabase';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
-import { supabase } from '../../../lib/supabase';
-import { FcGoogle } from 'react-icons/fc';
-import { FaGithub } from 'react-icons/fa';
 
 const RegisterCard = () => {
   const [username, setUsername] = useState('');
