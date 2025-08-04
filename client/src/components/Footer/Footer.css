@@ -207,6 +207,18 @@
     text-align: center;
 }
 
+.footer__terms__condition,
+.footer__privacy__policy {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.footer__terms__condition:hover,
+.footer__privacy__policy:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .fotter__copyright__container .nav::-webkit-scrollbar {
     display: none;
