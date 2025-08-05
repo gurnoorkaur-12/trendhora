@@ -22,9 +22,6 @@ const LoginCard = ({ email, password, setEmail, setPassword }) => {
     return (
         <div className="login__card__container">
             <div className="login__card">
-                <div className="login__header">
-                    <h1>Login</h1>
-                </div>
                 <form onSubmit={handleLogin}>
                     <div className="login__inputs">
                         <div className="email__input__container input__container">
