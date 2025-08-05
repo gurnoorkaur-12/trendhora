@@ -45,6 +45,7 @@ const Cart = () => {
         amount: cartItems.totalAmount,
       };
 
+
       await axios
         .post(`${process.env.REACT_APP_BACKEND_URL}/api/payment`, config)
         .then((res) => {
@@ -55,6 +56,8 @@ const Cart = () => {
         .catch((err) => console.log(err));
     } else {
       return;
+
+
     }
   };
 
