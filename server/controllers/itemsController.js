@@ -67,9 +67,24 @@ const updateItem = (req, res) => {
 }
 
 /* DELETE Request handler */
-const deleteItem = (req, res) => {
-    res.json({message: "delete Item"})
-}
+const deleteItem = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!id) {
+      return res.status(400).json({ message: "Item ID is required" });
+    }
+    const deletedItem = await Item.findByIdAndDelete(id);
+     if (!deletedItem) {
+      return res.status(404).json({ message: "Item not found" });
+    }
+    return res.status(200).json({ message: "Item deleted successfully" });
+
+  } catch (error) {
+    console.error("Error deleting item:", error);
+    return res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
 
 module.exports = {
     getItem,
