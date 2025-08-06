@@ -7,7 +7,7 @@
 
 .detail__and__carousel__container {
     height: auto;
-    width: 99%;
+    width: 98%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,8 +15,8 @@
     flex-wrap: wrap;
     position: relative;
     top: 8rem;
-    box-shadow: 0.5px 0.5px 8px -1px;
-    border-radius: 1rem;
+    box-shadow: 0.1px 0.1px 3px -1px;
+    border-radius: 0.5rem;
     margin:1px auto;
     transition: transform 0.3s ease;
 }
@@ -47,6 +47,6 @@
     color: black;
 }
 
-.detail__and__carousel__container:hover {
-  transform: scale(1.005);
-}
+/* .detail__and__carousel__container:hover {
+  transform: scale(1.003);
+} */
