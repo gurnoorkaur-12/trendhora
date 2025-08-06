@@ -10,7 +10,7 @@ const Related = (props) => {
     const [ kidsItems, setKidsItems ] = useState()
 
     useEffect(() => {
-        axios.get("https://trendhora-api.onrender.com/api/items")
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/items`)
             .then(res => {
                 setMenItems(res.data.filter((item) => item.category === "men"))
                 setKidsItems(res.data.filter((item) => item.category === "kids" ))
@@ -23,7 +23,7 @@ const Related = (props) => {
             <div className="related__products">
                 <div className="related__header__container">
                     <div className="related__header">
-                        <h2>Recommended Products</h2>
+                        <h2>RECOMMENDED PRODUCTS <span class="badge text-bg-danger">TRY NOW</span></h2>
                     </div>
                     <div className="related__header__line">
                             

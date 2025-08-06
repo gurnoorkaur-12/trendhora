@@ -120,3 +120,8 @@
 
     
 }
+@media (max-width: 780px){
+    .landing__container{
+        margin-top: 6rem;
+    } 
+} 
