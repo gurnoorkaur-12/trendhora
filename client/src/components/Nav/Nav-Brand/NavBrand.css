@@ -2,17 +2,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 70px;
-  margin-bottom: 2rem;
+  height:6rem;
 }
-
+.navbrand{
+  height: 8rem;
+}
 .navbrand img {
-  height: 200px;
-  width: auto;
-  object-fit: contain;
+  height: 8rem;
+
   cursor: pointer;
   transition: transform 0.3s ease;
-  margin-top: 2rem;
+
 }
 
 /* Hover effect */
