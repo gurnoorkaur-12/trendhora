@@ -15,20 +15,18 @@
     height: 45px;
     /* border-radius: 30px; */
     outline: none;
-    padding-left: 25px;
     font-size: .9rem;
     border-color: #FFE26E;
     border-style: solid;
     border-radius: 10px;
+    border-top-right-radius:0;
+    border-bottom-right-radius: 0;
 }
-
 .search__form__button {
-    position: absolute;
     height: 45px;
     width: 50px;
     background-color: #FFE26E;;
     color: rgb(0, 0, 0);
-    right: 0px;
     font-weight: bold;
     border-color: #FFE26E;
     border-style: solid;
@@ -47,7 +45,7 @@
 
 input[type="text"]:placeholder-shown{
     text-align: center;
-    padding: 15px;
+    text-overflow: ellipsis !important;
 }
 
 @media screen and (max-width: 600px) {
@@ -55,9 +53,6 @@ input[type="text"]:placeholder-shown{
     text-align: start;
     padding: 15px;
 }
-    .search__form {
-        width: 300px;
-    }
 }
 
 
