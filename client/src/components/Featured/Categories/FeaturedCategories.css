@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 50px;
+    padding-top: 10px;
 }
 
 .featured__categories__header {
@@ -44,13 +44,13 @@
 }
 
 .featured__categories__card__container {
-    margin: 20px auto;
+    margin: 10px auto;
     width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    padding: 50px 0;
+    padding: 20px 0;
     
 }
