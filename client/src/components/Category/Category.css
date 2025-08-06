@@ -104,6 +104,31 @@
     color: #ffffff;
 }
 
+/* Dark mode: white text for show and filter elements */
+.dark-mode .show__filter,
+.dark-mode .filter__by {
+    color: #ffffff !important;
+}
+
+/* Dark mode: white text for any text elements in category sort */
+.dark-mode .category__sort {
+    color: #ffffff;
+}
+
+/* Dark mode: white text for any labels or text in filter area */
+.dark-mode .category__sort label,
+.dark-mode .category__sort span,
+.dark-mode .category__sort div {
+    color: #ffffff !important;
+}
+
+/* Dark mode: white text for any select or option elements */
+.dark-mode .category__sort select,
+.dark-mode .category__sort option {
+    color: #ffffff !important;
+    background-color: #2d2d2d !important;
+}
+
 @media(max-width:768px){
     .category__container{
         margin-top: 6rem;
