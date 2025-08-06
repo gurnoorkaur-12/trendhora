@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Cart from '../../Card/Cart/Cart';
+import ThemeToggle from '../../ThemeToggle/ThemeToggle';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { WishItemsContext } from '../../../Context/WishItemsContext';
@@ -99,6 +100,9 @@ const Control = () => {
 
   return (
     <Box sx={{ display: 'flex', gap: 3, alignItems: 'center' }}>
+      {/* Theme Toggle */}
+      <ThemeToggle />
+
       {/* Login or Profile */}
       {!user ? (
         <Tooltip title="Login to your account" {...tooltipProps}>

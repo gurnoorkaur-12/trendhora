@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 
 const ThemeContext = createContext();
 
@@ -12,32 +12,30 @@ export const useTheme = () => {
 
 export const ThemeProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    // بررسی localStorage برای حالت ذخیره شده
+    // Check localStorage for saved theme preference
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       return savedTheme === 'dark';
     }
-    // پیش‌فرض: لایت مود
-    return false;
+    // Check system preference
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
-
-  useEffect(() => {
-    // ذخیره حالت در localStorage
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-    
-    // اعمال کلاس به body
-    if (isDarkMode) {
-      document.body.classList.add('dark-mode');
-      document.body.classList.remove('light-mode');
-    } else {
-      document.body.classList.add('light-mode');
-      document.body.classList.remove('dark-mode');
-    }
-  }, [isDarkMode]);
 
   const toggleTheme = () => {
     setIsDarkMode(prev => !prev);
   };
+
+  useEffect(() => {
+    // Save theme preference to localStorage
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    
+    // Apply theme to document
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark-mode');
+    } else {
+      document.documentElement.classList.remove('dark-mode');
+    }
+  }, [isDarkMode]);
 
   const value = {
     isDarkMode,
