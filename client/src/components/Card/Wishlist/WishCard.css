@@ -1,13 +1,22 @@
-/* ===== Wishlist container ===== */
 .wishlist__items {
-  display: flex !important;        /* force flex layout */
-  flex-direction: row !important;  /* force row direction */
-  flex-wrap: nowrap !important;    /* prevent wrapping to next line */
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
   gap: 20px;
-  overflow-x: auto;                 /* horizontal scroll */
-  white-space: nowrap;              /* ensures inline behavior */
+  overflow-x: auto;
+  white-space: nowrap;
   padding: 20px 0;
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  /* space for first and last cards */
+  padding-left: 16px;
+  padding-right: 16px;
+
+  /* ensures snap starts after padding */
+  scroll-padding-left: 16px;
+  scroll-padding-right: 16px;
 }
 
 .wishlist__items::-webkit-scrollbar {
@@ -19,16 +28,17 @@
   border-radius: 4px;
 }
 
-/* ===== WishCard styling ===== */
 .wishcard {
-  display: inline-block;            /* keep cards inline */
+  display: inline-block;
   flex: 0 0 auto;
-  width: 220px;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* snap to left edge */
+  scroll-snap-align: start;
 }
 
 .wishcard:hover {
@@ -38,7 +48,6 @@
 
 .wishcard img {
   width: 100%;
-  height: 160px;
   object-fit: cover;
 }
 
@@ -48,12 +57,59 @@
 }
 
 .wishcard__title {
-  font-size: 16px;
   font-weight: 600;
   margin-bottom: 6px;
 }
 
 .wishcard__price {
-  font-size: 14px;
   color: #777;
+}
+
+/* ===== Responsive Styles ===== */
+@media (max-width: 1024px) {
+  .wishcard {
+    width: 180px;
+  }
+  .wishcard img {
+    height: 140px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wishlist__items {
+    gap: 12px;
+  }
+  .wishcard {
+    width: 150px;
+  }
+  .wishcard img {
+    height: 110px;
+  }
+  .wishcard__title {
+    font-size: 14px;
+  }
+  .wishcard__price {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wishlist__items {
+    gap: 10px;
+    padding: 15px 16px; /* keeps same left/right space for snap */
+    scroll-padding-left: 16px;
+    scroll-padding-right: 16px;
+  }
+  .wishcard {
+    width: 130px;
+  }
+  .wishcard img {
+    height: 95px;
+  }
+  .wishcard__title {
+    font-size: 13px;
+  }
+  .wishcard__price {
+    font-size: 12px;
+  }
 }
