@@ -1,4 +1,3 @@
-import RecentlyViewedSection from '../components/RecentlyViewedSection';
 import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import Landing from "../components/Landing/Landing";
@@ -21,7 +20,6 @@ const Home = () => {
     return (
         <Fragment>
             <Landing />
-            <RecentlyViewedSection />
             <FeaturedCategories />
             <FeaturedItems items={featuredItems} />
         </Fragment>
