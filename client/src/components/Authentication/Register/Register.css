@@ -1,6 +1,13 @@
 .register__auth__container {
     height: auto;
     width: 100%;
+    margin-top: 10rem;
+    background-color: var(--bg-primary);
+}
+
+/* Dark mode: black background for register container */
+.dark-mode .register__auth__container {
+    background-color: #000000;
 }
 
 .register__auth {
@@ -10,4 +17,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 5rem;
 }

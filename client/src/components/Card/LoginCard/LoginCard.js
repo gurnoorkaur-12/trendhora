@@ -9,10 +9,10 @@ const LoginCard = ({ email, password, setEmail, setPassword }) => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/api/auth/login', { email, password });
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/auth/login`, { email, password });
             localStorage.setItem('token', response.data.token); // Store JWT token
             alert('Login successful!');
-            navigate('/dashboard'); // Navigate to dashboard or desired route after login
+            navigate('/account/me'); // Navigate to account page after login
         } catch (error) {
             const errorMessage = error.response ? error.response.data.message : error.message;
             alert(`Login failed: ${errorMessage}`);
@@ -22,9 +22,6 @@ const LoginCard = ({ email, password, setEmail, setPassword }) => {
     return (
         <div className="login__card__container">
             <div className="login__card">
-                <div className="login__header">
-                    <h1>Login</h1>
-                </div>
                 <form onSubmit={handleLogin}>
                     <div className="login__inputs">
                         <div className="email__input__container input__container">
