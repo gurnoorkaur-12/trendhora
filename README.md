@@ -68,6 +68,11 @@ cd server
 npm install
 npm run dev
 ```
+3. **Add dummy data in database**
+```
+cd server
+npm run seed
+```
 
 `Tip`: Run both terminals side-by-side to monitor the frontend and backend processes simultaneously.
 

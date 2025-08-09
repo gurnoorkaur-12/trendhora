@@ -209,17 +209,19 @@ const ItemCard = (props) => {
         <>
             <div className="product__card__card">
                 <div className="product__card">
-                    <div
-                        className="product__image"
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={() => setIsHovered(false)}
-                    >
-                        {isHovered && currentItem.image[1] ? (
-                            <img src={getImageUrl(currentItem.image[1])} alt="item" className="product__img" />
-                        ) : (
-                            <img src={getImageUrl(currentItem.image[0])} alt="item" className="product__img" />
-                        )}
-                    </div>
+                    <Link to={`/item/${currentItem.category}/${currentItem._id}`}>
+                        <div
+                            className="product__image"
+                            onMouseEnter={() => setIsHovered(true)}
+                            onMouseLeave={() => setIsHovered(false)}
+                        >
+                            {isHovered && currentItem.image[1] ? (
+                                <img src={getImageUrl(currentItem.image[1])} alt="item" className="product__img" />
+                            ) : (
+                                <img src={getImageUrl(currentItem.image[0])} alt="item" className="product__img" />
+                            )}
+                        </div>
+                    </Link>
                     <div className="product__card__detail">
                         <div className="product__name">
                             <Link
@@ -252,7 +254,6 @@ const ItemCard = (props) => {
                     </div>
                 </div>
             </div>
-
             <Toaster
                 title={toasterTitle}
                 message={toasterMessage}

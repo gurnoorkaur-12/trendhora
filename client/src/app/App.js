@@ -1,8 +1,10 @@
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useState, useEffect } from "react";
 
+import Loader from "../components/Loader/loader.js";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Home from '../routes/Home';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
@@ -17,24 +19,53 @@ import Login from '../components/Authentication/Login/Login';
 import Register from '../components/Authentication/Register/Register';
 import Wishlist from '../components/Wishlist';
 import WishItemsProvider from '../Context/WishItemsProvider';
-import DrawerNav from '../components/Nav/DrawerNav/DrawerNav';
 import Checkout from '../components/Checkout/Checkout';
 import SearchProvider from '../Context/SearchProvider';
 import Toaster from '../components/Toaster/toaster';
-import TermsConditions from '../components/Legal/TermsConditions/TermsConditions';
-import PrivacyPolicy from '../components/Legal/PrivacyPolicy/PrivacyPolicy';
+import { ThemeProvider } from '../Context/ThemeContext';
 
 import FaqList from '../Pages/Footer/Faq/FaqList.js';
 import AccessiblityPage from '../Pages/Footer/Accessibility/Accessibility.js';
 import RefundPage from '../Pages/Footer/Refund/Refund.js';
 import ShippingPage from '../Pages/Footer/Shipping/Shipping.js';
+import TermsConditions from '../components/Legal/TermsConditions/TermsConditions';
+import PrivacyPolicy from '../components/Legal/PrivacyPolicy/PrivacyPolicy';
 
 // ✅ Import RecentlyViewedSection
 import RecentlyViewedSection from '../components/RecentlyViewedSection';
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (loading) {
+    return (
+      <ThemeProvider>
+        <CartItemsProvider>
+          <WishItemsProvider>
+            <SearchProvider>
+              <Router>
+                <div className="loader-wrapper">
+                  <div className="wrapper">
+                    <Loader />
+                  </div>
+                </div>
+              </Router>
+            </SearchProvider>
+          </WishItemsProvider>
+        </CartItemsProvider>
+      </ThemeProvider>
+    );
+  }
+
   return (
-    <>
+    <ThemeProvider>
       <CartItemsProvider>
         <WishItemsProvider>
           <SearchProvider>
@@ -79,7 +110,7 @@ function App() {
         </WishItemsProvider>
       </CartItemsProvider>
       <Toaster />
-    </>
+    </ThemeProvider>
   );
 }
 

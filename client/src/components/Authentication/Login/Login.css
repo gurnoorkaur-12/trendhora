@@ -1,101 +1,154 @@
-/* Container for the entire login page */
+/* ==== Container for the entire login page ==== */
 .login__auth__container {
-    height: 85vh; /* Full viewport height */
-    width: 100%; /* Full viewport width */
-    display: flex; /* Flexbox layout for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    background-color: #f0f0f0; /* Light gray background */
-    overflow: hidden;    
-    margin-top: 10rem;
+  min-height: calc(120vh - 20px); /* subtract header height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: var(--bg-primary);
+  box-sizing: border-box;
 }
 
-/* Container for the login card */
+/* Dark mode: black background for login container */
+.dark-mode .login__auth__container {
+  background-color: #000000;
+}
+
+/* ==== Card-like box for login form ==== */
 .login__auth {
-    width: 100%; /* Full width */
-    max-width: 400px; /* Max width for larger screens */
-    padding: 2rem; /* Padding around the card */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    border-radius: 8px; /* Rounded corners */
-    background-color: #fff; /* White background */
+  width: 100%;
+  max-width: 400px;
+  padding: 2.5rem;
+  background-color: var(--bg-secondary);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
 }
 
-/* Header for the login card */
+/* Dark mode: soft white shadow for login card */
+.dark-mode .login__auth {
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
+
+/* ==== Login Header ==== */
 .login__header h1 {
-    font-size: 2rem; /* Larger font size */
-    font-weight: bold; /* Bold text */
-    margin-bottom: 1.5rem; /* Space below the header */
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: var(--text-primary);
 }
 
-/* General styles for input containers */
+/* ==== Input Container ==== */
 .input__container {
-    margin-bottom: 1rem; /* Space between input fields */
+  margin-bottom: 1.25rem;
 }
 
-/* Labels for the inputs */
+/* ==== Label ==== */
 .input__label {
-    font-size: 1rem; /* Standard font size */
-    font-weight: 500; /* Medium weight */
-    margin-bottom: 0.5rem; /* Space below the label */
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
 }
 
-/* Input fields */
+/* ==== Input ==== */
 .login__input {
-    width: 100%; /* Full width */
-    padding: 0.75rem; /* Padding inside the input */
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 4px; /* Slightly rounded corners */
-    font-size: 1rem; /* Standard font size */
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-size: 0.95rem;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: border-color 0.2s ease;
 }
 
-/* Container for the login button */
+.login__input::placeholder {
+  color: var(--text-muted);
+}
+
+.login__input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+/* ==== Login Button Container ==== */
 .login__button__container {
-    display: flex; /* Flexbox for centering */
-    justify-content: center; /* Center the button */
-    margin-top: 1.5rem; /* Space above the button */
+  margin-top: 1.5rem;
 }
 
-/* Login button */
+/* ==== Login Button ==== */
 .login__button {
-    width: 100%; /* Full width */
-    padding: 0.75rem; /* Padding inside the button */
-    font-size: 1rem; /* Standard font size */
-    font-weight: bold; /* Bold text */
-    background-color: #ffe26e; /* Custom yellow background */
-    border: 1px dashed #ffe26e; /* Dashed border matching background */
-    border-radius: 4px; /* Slightly rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease; /* Smooth background transition */
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bg-primary);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* Hover effect for the login button */
 .login__button:hover {
-    background-color: #ffd700; /* Darker yellow on hover */
+  background-color: var(--accent-hover);
 }
 
-/* Additional actions (forgot password and create account links) */
+/* ==== OAuth Icons Row ==== */
+.oauth__icon__row {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.oauth-icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.oauth-icon-btn:hover {
+  background-color: #efefef;
+}
+
+/* ==== Divider between login methods ==== */
+.oauth__divider {
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 0.85rem;
+  color: #999;
+}
+
+/* ==== Other Actions ==== */
 .login__other__actions {
-    margin-top: 1rem; /* Space above the other actions */
-    text-align: center; /* Centered text */
+  margin-top: 1.2rem;
+  text-align: center;
 }
 
-/* Forgot password link */
+/* ==== Forgot Password & New Account ==== */
 .login__forgot__password,
 .login__new__account {
-    font-size: 0.9rem; /* Slightly smaller font size */
-    color: #007bff; /* Custom blue color */
-    text-decoration: none; /* No underline */
-    cursor: pointer; /* Pointer cursor on hover */
+  font-size: 0.9rem;
+  color: var(--accent-color);
+  text-decoration: none;
+  cursor: pointer;
 }
 
-/* Hover effect for the links */
 .login__forgot__password:hover,
 .login__new__account a:hover {
-    text-decoration: underline; /* Underline on hover */
+  text-decoration: underline;
 }
 
-/* Link for creating a new account */
+/* ==== New Account Link Inherit Style ==== */
 .login__new__account a {
-    color: inherit; /* Inherit color from parent */
-    text-decoration: none; /* No underline */
+  color: inherit;
+  text-decoration: none;
 }
+

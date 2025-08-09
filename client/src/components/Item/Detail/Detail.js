@@ -14,7 +14,7 @@ import { CartItemsContext } from "../../../Context/CartItemsContext";
 import { WishItemsContext } from "../../../Context/WishItemsContext";
 
 const Detail = ({ item }) => {
-  const { id, category } = useParams(); // ✅ Ensure category is retrieved
+  const { id, category } = useParams();
   const cartItems = useContext(CartItemsContext);
   const wishItems = useContext(WishItemsContext);
   const [currentItem, setCurrentItem] = useState(item || null);
@@ -22,17 +22,16 @@ const Detail = ({ item }) => {
   const [size, setSize] = useState("");
 
   useEffect(() => {
-    // 🔁 Load from localStorage if item is not passed as a prop
     if (!item && id && category) {
       const recent = JSON.parse(localStorage.getItem("recentlyViewed") || "[]");
       const found = recent.find(
         (product) => product._id === id && product.category === category
       );
-      setCurrentItem(found);
-      if (found && found.size?.length > 0) {
+      setCurrentItem(found || null);
+      if (found?.size?.length > 0) {
         setSize(found.size[0]);
       }
-    } else if (item && item.size?.length > 0) {
+    } else if (item?.size?.length > 0) {
       setSize(item.size[0]);
     }
   }, [id, category, item]);
@@ -41,57 +40,68 @@ const Detail = ({ item }) => {
     setSize(event.target.value);
   };
 
-  const handelQuantityIncrement = () => {
+  const handleQuantityIncrement = () => {
     setQuantity((prev) => prev + 1);
   };
 
-  const handelQuantityDecrement = () => {
+  const handleQuantityDecrement = () => {
     if (quantity > 1) setQuantity((prev) => prev - 1);
   };
 
-  const handelAddToCart = () => {
-    cartItems.addItem(currentItem, quantity, size);
+  const handleAddToCart = () => {
+    if (currentItem) cartItems.addItem(currentItem, quantity, size);
   };
 
-  const handelAddToWish = () => {
-    wishItems.addItem(currentItem);
+  const handleAddToWish = () => {
+    if (currentItem) wishItems.addItem(currentItem);
   };
 
   if (!currentItem) return <p>Loading product details...</p>;
 
   return (
     <div className="product__detail__container">
-      <div className="product__detail">
-        <div className="product__main__detail">
-          <div className="product__name__main">{currentItem.name}</div>
-          <div className="product__detail__description">
-            {currentItem.description || "No description available."}
+      <div className="product__detail card text-center">
+        <div className="product__name__main card-header">
+          {currentItem.name}
+        </div>
+
+        <div className="product__detail__description card-body card-title">
+          {currentItem.description || "No description available."}
+        </div>
+
+        <div className="product__color card-text">
+          <div className="product-color-label">COLOR</div>
+          <div className="product-color-options">
+            {[
+              "#FF0000",
+              "#0000FF",
+              "#008000",
+              "#FFA500",
+              "#800080",
+              "#000000",
+              "#FFC0CB",
+            ].map((clr, idx) => (
+              <div
+                key={idx}
+                className="product-color"
+                style={{ backgroundColor: clr }}
+              ></div>
+            ))}
           </div>
-          <div className="product__color">
-            <div className="product-color-label">COLOR</div>
-            <div className="product-color-options">
-              {["#FF0000", "#0000FF", "#008000", "#FFA500", "#800080", "#000000", "#FFC0CB"].map(
-                (clr, idx) => (
-                  <div
-                    key={idx}
-                    className="product-color"
-                    style={{ backgroundColor: clr }}
-                  ></div>
-                )
-              )}
-            </div>
-          </div>
-          <div className="product__price__detail">${currentItem.price}</div>
+        </div>
+
+        <div className="product__price__detail alert alert-warning">
+          <p>${currentItem.price}</p>
         </div>
 
         <form onSubmit={(e) => e.preventDefault()} className="product__form">
           <div className="product__quantity__and__size">
             <div className="product__quantity">
-              <IconButton onClick={handelQuantityIncrement}>
+              <IconButton onClick={handleQuantityIncrement}>
                 <AddCircleIcon />
               </IconButton>
               <div className="quantity__input">{quantity}</div>
-              <IconButton onClick={handelQuantityDecrement}>
+              <IconButton onClick={handleQuantityDecrement}>
                 <RemoveCircleIcon fontSize="medium" />
               </IconButton>
             </div>
@@ -113,7 +123,7 @@ const Detail = ({ item }) => {
           </div>
 
           <div className="collect__item__actions">
-            <div className="add__cart__add__wish">
+            <div className="add__cart__add__wish card-footer">
               <div className="add__cart">
                 <Button
                   variant="outlined"
@@ -131,7 +141,7 @@ const Detail = ({ item }) => {
                     color: "#FFE26E",
                     borderWidth: "3px",
                   }}
-                  onClick={handelAddToCart}
+                  onClick={handleAddToCart}
                 >
                   ADD TO BAG
                 </Button>
@@ -153,7 +163,7 @@ const Detail = ({ item }) => {
                     color: "#FFE26E",
                     borderWidth: "3px",
                   }}
-                  onClick={handelAddToWish}
+                  onClick={handleAddToWish}
                 >
                   <FavoriteBorderIcon sx={{ width: "22px", height: "22px" }} />
                 </IconButton>
