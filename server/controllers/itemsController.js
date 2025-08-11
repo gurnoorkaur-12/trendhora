@@ -1,5 +1,5 @@
 const Item = require("../models/Item");
-
+const { default: asyncHandler } = require("../utility/asyncHandler");
 /* GET request handler */
 const getItem = async (req, res) => {
   try {
