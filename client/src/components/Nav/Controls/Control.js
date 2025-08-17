@@ -27,8 +27,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { WishItemsContext } from '../../../Context/WishItemsContext';
 import { supabase } from '../../../lib/supabase';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 const Control = () => {
+  const isSmallScreen = useMediaQuery('(max-width:768px)');
+  
   const wishItems = useContext(WishItemsContext);
   const [user, setUser] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -178,7 +182,7 @@ const handleDeleteAccount = async () => {
   return (
     <Box sx={{ display: 'flex', gap: 3, alignItems: 'center' }}>
       {/* Theme Toggle */}
-      <ThemeToggle />
+      {!isSmallScreen && (<ThemeToggle />)}
 
       {/* Login or Profile */}
       {!user ? (
@@ -192,7 +196,7 @@ const handleDeleteAccount = async () => {
               textTransform: 'none',
               fontWeight: 500,
               fontSize: '0.9rem',
-              borderRadius: '20px',
+              borderRadius: { xs: '12px', md: '20px'},
               '&:hover': {
                 backgroundColor: '#27ae60',
               },
@@ -246,7 +250,7 @@ const handleDeleteAccount = async () => {
       )}
 
       {/* Wishlist */}
-      <Tooltip title="Wishlist" {...tooltipProps}>
+      {!isSmallScreen && (<Tooltip title="Wishlist" {...tooltipProps}>
         <Box component={Link} to="/wishlist" sx={controlButton}>
           <Badge
             badgeContent={wishItems.items.length}
@@ -267,10 +271,10 @@ const handleDeleteAccount = async () => {
             <FavoriteBorderIcon sx={{ fontSize: '1.8rem', color: 'var(--text-primary)' }} />
           </Badge>
         </Box>
-      </Tooltip>
+      </Tooltip>)}
 
       {/* Cart */}
-      <Tooltip title="Cart" {...tooltipProps}>
+      {!isSmallScreen && (<Tooltip title="Cart" {...tooltipProps}>
         <Box sx={controlButton}>
           <Box sx={{ '& svg': { color: 'var(--text-primary)', fontSize: '1.8rem' } }}>
             <Cart />
