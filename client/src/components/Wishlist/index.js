@@ -26,7 +26,7 @@ const Wishlist = () => {
                         </div>
                     ) : (
                         <div className="wishlist__empty">
-                            <h3>Your wishlist is empty</h3>
+                            <p class="color">Your wishlist is empty</p>
                             <button 
                                 className="wishlist__btn"
                                 onClick={() => navigate('/shop')}
