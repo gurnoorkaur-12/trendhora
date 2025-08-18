@@ -1,46 +1,39 @@
-.nav__top__container {
-  width: 100%;
-  background-color: #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  font-family: 'Roboto', sans-serif;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
+/* Ensure the top container wraps content properly on small screens */
 .top__container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  height: max-content;
+  flex-wrap: wrap; /* allow wrapping instead of pushing off-screen */
 }
-
+.mbox{
+  display: flex;
+  margin-right: 0.8rem;
+  padding-top: 6px;
+  padding-bottom: 8px;
+}
+/* Search form container adjustments */
 .form__container {
   flex: 1;
-  margin: 0 20px;
+  min-width: 150px; /* prevent search bar from shrinking too far */
+  margin: 0 15px;
 }
 
-.control__bar {
-  display: flex;
-  gap: 15px;
-}
-
+/* Drawer (hamburger) stays visible on right side */
 .drawer {
   display: flex;
+  flex-shrink: 0; /* prevent it from being squeezed out */
 }
 
-/* Mobile hide search + control from top container */
+/* Mobile-specific tweaks */
 @media (max-width: 768px) {
+  .top__container {
+    padding: 6px;
+    flex-wrap: nowrap; /* keep them in one line */
+  }
   .form__container {
-    padding: 10px 0;
+    flex: 1;
+    padding: 2px;
+    margin: 0 10px;
   }
-  .drawer {
-    margin-left: auto;  
-  }
-
-  .top__container{
-    padding: 8px;
-  }
-
 }

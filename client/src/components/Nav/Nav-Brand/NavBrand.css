@@ -1,18 +1,11 @@
-.navbrand__container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height:6rem;
+.navbrand {
+  height: 8rem; /* default desktop size */
 }
-.navbrand{
-  height: 8rem;
-}
+
 .navbrand img {
   height: 8rem;
-
   cursor: pointer;
   transition: transform 0.3s ease;
-
 }
 
 /* Hover effect */
@@ -20,15 +13,26 @@
   transform: scale(1.05);
 }
 
-/* Dark mode compatibility (optional) */
-body.dark-theme .navbrand img {
-  filter: brightness(1.2);
+/* Dark mode compatibility */
+.dark-mode .navbrand img {
+  filter: brightness(0) invert(1) contrast(1.5) saturate(1.1);
 }
 
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .navbrand__container {
+    height: 60px;
+    display: flex;
+    align-items: flex-start; /* push logo toward top */
+    padding-bottom: 8px; /* small upward nudge */
+    margin-top: -44px; /* slight upward shift */
+  }
 
+  .navbrand {
+    height: 5.5rem;
+  }
 
-@media (max-width:768px){
-    .navbrand__container{
-        height: 44px;
-    }
+  .navbrand img {
+    height: 7rem;
+  }
 }

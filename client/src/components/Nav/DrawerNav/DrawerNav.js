@@ -11,6 +11,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Badge from '@mui/material/Badge';
 import { Link, useLocation } from 'react-router-dom';
 import Cart from '../../Card/Cart/Cart';
+import ThemeToggle from '../../ThemeToggle/ThemeToggle';
 import { WishItemsContext } from '../../../Context/WishItemsContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import NavBrand from '../Nav-Brand/Navbrand';
@@ -20,6 +21,7 @@ import womanWear from '../../../asset/icons/womanWear.png'
 import kidsWear from '../../../asset/icons/kidsWear.png'
 import home from '../../../asset/icons/home.png'
 import shop from '../../../asset/icons/shop.png'
+import userIcon from '../../../asset/icons/user.png'
 
 
 const navLinks = [
@@ -28,6 +30,7 @@ const navLinks = [
   { text: 'Men', to: '/category/men', icon: manWear},
   { text: 'Women', to: '/category/women', icon: womanWear },
   { text: 'Kids', to: '/category/kids', icon: kidsWear },
+  { text: 'About', to: '/about', icon: userIcon },
 ];
 
 const listVariants = {
@@ -195,6 +198,24 @@ const DrawerNav = () => {
                   </motion.div>
                 ))}
                 <Box />
+                
+                {/* Theme Toggle */}
+                <motion.div variants={itemVariants}>
+                  <ListItem disablePadding>
+                    <ListItemButton sx={{ ...linkButtonStyle, display: 'flex', alignItems: 'center' }}>
+                      <ListItemIcon sx={{ minWidth: 24, color: '#333' }}>
+                        <ThemeToggle />
+                      </ListItemIcon>
+                      <ListItemText 
+                        primary="Toggle Theme" 
+                        primaryTypographyProps={{ 
+                          color: 'inherit' 
+                        }} 
+                      />
+                    </ListItemButton>
+                  </ListItem>
+                </motion.div>
+
                 <motion.div variants={itemVariants}>
                   <ListItem disablePadding>
                     <ListItemButton
