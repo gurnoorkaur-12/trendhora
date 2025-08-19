@@ -15,12 +15,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { WishItemsContext } from '../../../Context/WishItemsContext';
 import { supabase } from '../../../lib/supabase';
-<<<<<<< HEAD
 import axios from 'axios';
-=======
-import useMediaQuery from '@mui/material/useMediaQuery';
 
->>>>>>> main
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Control = () => {
   const isSmallScreen = useMediaQuery('(max-width:768px)');

@@ -1,4 +1,4 @@
-//import { useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './LoginCard.css';
@@ -9,7 +9,6 @@ const LoginCard = ({ email, password, setEmail, setPassword }) => {
 const navigate = useNavigate();
 const [showPassword, setShowPassword] = useState(false);
 
-<<<<<<< HEAD
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
@@ -25,20 +24,6 @@ const [showPassword, setShowPassword] = useState(false);
             alert(`Login failed: ${errorMessage}`);
         }
     };
-=======
-const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/auth/login`, { email, password });
-        localStorage.setItem('token', response.data.token); // Store JWT token
-        alert('Login successful!');
-        navigate('/account/me'); // Navigate to account page after login
-    } catch (error) {
-        const errorMessage = error.response ? error.response.data.message : error.message;
-        alert(`Login failed: ${errorMessage}`);
-    }
-};
->>>>>>> main
 
 const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
