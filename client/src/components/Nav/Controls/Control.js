@@ -311,6 +311,7 @@ const handleDeleteAccount = async () => {
         </Box>
       </Tooltip>)}
 
+
       {/* Delete Account Dialog */}
       <Dialog open={deleteOpen} onClose={handleCloseDeleteDialog} maxWidth="xs" fullWidth>
         <DialogTitle>Delete your account?</DialogTitle>
