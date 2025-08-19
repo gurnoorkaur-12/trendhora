@@ -13,7 +13,11 @@ exports.registerUser = asyncHandler(async (req, res) => {
 
     const user = new User({ username, email, password });
     await user.save();
-    res.status(201).send('User registered successfully');
+
+    // Generate token right after registration
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+    res.status(201).json({ token });
 });
 
 exports.loginUser = asyncHandler(async (req, res) => {
@@ -21,10 +25,14 @@ exports.loginUser = asyncHandler(async (req, res) => {
 
     try {
         const user = await User.findOne({ email });
-        if (!user) return res.status(400).json({ message: 'Invalid email or password' });
+        if (!user) {
+            return res.status(400).json({ message: 'Invalid email or password' });
+        }
 
         const isMatch = await user.comparePassword(password);
-        if (!isMatch) return res.status(400).json({ message: 'Invalid email or password' });
+        if (!isMatch) {
+            return res.status(400).json({ message: 'Invalid email or password' });
+        }
 
         const token = jwt.sign(
             { id: user._id, role: user.role }, // include role
