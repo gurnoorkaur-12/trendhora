@@ -1,7 +1,7 @@
-
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
+const {asyncHandler }= require('../utility/asyncHandler');
 
 exports.registerUser = async (req, res) => {
   const { username, email, password } = req.body;
@@ -9,6 +9,13 @@ exports.registerUser = async (req, res) => {
     const userExists = await User.findOne({ email });
     if (userExists) {
       return res.status(400).json({ message: 'User already exists' });
+    }
+exports.registerUser = asyncHandler(async (req, res) => {
+    const { username, email, password } = req.body;
+
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+        return res.status(400).json({ message: 'User already exists' });
     }
 
     const user = new User({ username, email, password });
@@ -23,9 +30,14 @@ exports.registerUser = async (req, res) => {
   }
 };
 
+    const user = new User({ username, email, password });
+    await user.save();
+    res.status(201).send('User registered successfully');
+});
 
-exports.loginUser = async (req, res) => {
+exports.loginUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
+
     try {
         const user = await User.findOne({ email });
         if (!user) {
@@ -38,42 +50,15 @@ exports.loginUser = async (req, res) => {
         }
 
         const token = jwt.sign(
-            { id: user._id },
+            { id: user._id, role: user.role }, // include role
             process.env.JWT_SECRET,
             { expiresIn: '1h' }
         );
 
-        // remove password before sending user object
-        const userData = user.toObject();
-        delete userData.password;
-
-        res.json({
-            token,
-            user: userData
-        });
+        res.json({ token });
     } catch (error) {
         console.error('Login error:', error);
         res.status(500).json({ message: error.message });
     }
-};
+});
 
-exports.getMe = async (req, res) => {
-  try {
-    const authHeader = req.headers.authorization;
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({ message: 'No token provided' });
-    }
-
-    const token = authHeader.split(' ')[1];
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-    const user = await User.findById(decoded.id).select('-password');
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-
-    res.json(user);
-  } catch (error) {
-    res.status(401).json({ message: 'Invalid token' });
-  }
-};
